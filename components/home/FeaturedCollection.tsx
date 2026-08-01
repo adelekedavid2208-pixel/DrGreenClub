@@ -50,7 +50,7 @@ const fadeUp = {
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, delay, ease: "easeOut" },
   }),
 };
 
@@ -77,7 +77,7 @@ function CategoryCard({ category, index }: { category: Category; index: number }
         >
           <motion.div
             variants={{ hover: { scale: 1.08 } }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="absolute inset-0"
           >
             <Image
