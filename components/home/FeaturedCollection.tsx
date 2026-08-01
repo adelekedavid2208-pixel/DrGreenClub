@@ -45,23 +45,13 @@ const CATEGORIES: Category[] = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: "easeOut" },
-  }),
-};
-
 function CategoryCard({ category, index }: { category: Category; index: number }) {
   return (
     <motion.div
-      custom={index * 0.08}
-      initial="hidden"
-      whileInView="visible"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      variants={fadeUp}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: "easeOut" }}
     >
       <Link
         href={category.href}
