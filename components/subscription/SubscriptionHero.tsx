@@ -1,16 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 export function SubscriptionHero() {
@@ -20,20 +16,20 @@ export function SubscriptionHero() {
         {/* Left column */}
         <div>
           <motion.p
-            custom={0}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
             className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-[#7fb894]"
           >
             Membership
           </motion.p>
 
           <motion.h1
-            custom={0.1}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[38px] font-semibold leading-[1.12] text-[#f4f1ea] sm:text-[48px] lg:text-[54px]"
           >
             A ritual worth{" "}
@@ -41,10 +37,10 @@ export function SubscriptionHero() {
           </motion.h1>
 
           <motion.p
-            custom={0.2}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-md text-[15px] leading-relaxed text-[#f4f1ea]/70"
           >
             DrGreenClub membership brings curated glass, papers, and gear to
@@ -53,10 +49,10 @@ export function SubscriptionHero() {
           </motion.p>
 
           <motion.div
-            custom={0.3}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <motion.button
@@ -83,10 +79,10 @@ export function SubscriptionHero() {
 
         {/* Right column */}
         <motion.div
-          custom={0.2}
           initial="hidden"
           animate="visible"
           variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
         >
           <Image

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 interface Step {
   number: string;
@@ -35,13 +35,9 @@ const STEPS: Step[] = [
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 export function PartnershipProcess() {
@@ -86,11 +82,11 @@ export function PartnershipProcess() {
             {STEPS.map((step, index) => (
               <motion.div
                 key={step.number}
-                custom={index * 0.12}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }}
                 variants={fadeUp}
+                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="relative flex flex-col items-center rounded-2xl bg-[#fdfbf6] px-7 py-8 text-center shadow-sm"
               >
                 <div className="relative z-10 mb-5 flex h-[72px] w-[72px] items-center justify-center rounded-full border border-[#1a1a1a]/10 bg-[#fdfbf6]">

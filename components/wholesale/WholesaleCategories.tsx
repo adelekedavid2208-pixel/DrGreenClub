@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 interface Category {
@@ -57,23 +57,19 @@ const CATEGORIES: Category[] = [
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 function CategoryCard({ category, index }: { category: Category; index: number }) {
   return (
     <motion.div
-      custom={index * 0.08}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={fadeUp}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       className="group flex flex-col overflow-hidden rounded-2xl bg-[#fdfbf6] shadow-sm transition-shadow duration-300 hover:shadow-xl"
     >
       <Link

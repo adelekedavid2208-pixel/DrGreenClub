@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { BadgeCheck, Truck, Layers, Headset } from "lucide-react";
 
 interface Benefit {
@@ -36,13 +36,9 @@ const BENEFITS: Benefit[] = [
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 export function WhyPartner() {
@@ -78,13 +74,12 @@ export function WhyPartner() {
             return (
               <motion.div
                 key={benefit.title}
-                custom={index * 0.1}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={fadeUp}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 22 } }}
                 className="flex flex-col rounded-2xl bg-[#fdfbf6] p-7 shadow-sm transition-shadow duration-300 hover:shadow-xl"
               >
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#0f2318]/[0.06]">

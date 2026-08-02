@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 interface FooterColumn {
@@ -52,13 +52,9 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 export function Footer() {
@@ -78,11 +74,11 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_2fr]">
           {/* Brand column */}
           <motion.div
-            custom={0}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link href="/" className="font-serif text-xl font-semibold">
               <span className="text-[#f4f1ea]">Dr.</span>
@@ -129,11 +125,15 @@ export function Footer() {
             {FOOTER_COLUMNS.map((column, index) => (
               <motion.div
                 key={column.title}
-                custom={0.1 + index * 0.08}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={fadeUp}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.1 + index * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               >
                 <h3 className="text-sm font-semibold text-[#f4f1ea]">
                   {column.title}

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Building2, Truck, Users, TrendingUp } from "lucide-react";
 
 interface WholesaleStat {
@@ -16,13 +16,9 @@ const STATS: WholesaleStat[] = [
   { label: "Dedicated Account Team", value: "24/7", icon: Users },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 export function WholesalePreview() {
@@ -32,22 +28,22 @@ export function WholesalePreview() {
         <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <motion.p
-              custom={0}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
               className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#7fb894]"
             >
               Wholesale
             </motion.p>
 
             <motion.h2
-              custom={0.1}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="max-w-lg font-serif text-4xl font-semibold leading-tight text-[#f4f1ea] sm:text-[42px]"
             >
               Wholesale partnerships,{" "}
@@ -56,11 +52,11 @@ export function WholesalePreview() {
           </div>
 
           <motion.p
-            custom={0.2}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-md text-[15px] leading-relaxed text-[#f4f1ea]/70"
           >
             We supply dispensaries, retailers, and distribution partners with
@@ -76,13 +72,16 @@ export function WholesalePreview() {
             return (
               <motion.div
                 key={stat.label}
-                custom={0.15 + index * 0.1}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={fadeUp}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.15 + index * 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 22 } }}
                 className="rounded-2xl border border-[#f4f1ea]/10 bg-[#f4f1ea]/[0.04] p-6 transition-colors hover:bg-[#f4f1ea]/[0.07]"
               >
                 <Icon size={18} strokeWidth={1.75} className="mb-4 text-[#7fb894]" />
@@ -98,11 +97,11 @@ export function WholesalePreview() {
         </div>
 
         <motion.div
-          custom={0.6}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mt-14 flex flex-col items-start gap-6 border-t border-[#f4f1ea]/10 pt-10 sm:flex-row sm:items-center sm:justify-between"
         >
           <p className="max-w-sm text-sm leading-relaxed text-[#f4f1ea]/60">

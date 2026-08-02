@@ -1,16 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Building2, ArrowRight } from "lucide-react";
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 export function WholesaleHero() {
@@ -20,10 +16,10 @@ export function WholesaleHero() {
         {/* Left column */}
         <div>
           <motion.div
-            custom={0}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
             className="mb-4 flex items-center gap-2"
           >
             <Building2 size={14} className="text-[#7fb894]" strokeWidth={1.75} />
@@ -33,10 +29,10 @@ export function WholesaleHero() {
           </motion.div>
 
           <motion.h1
-            custom={0.1}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[38px] font-semibold leading-[1.12] text-[#f4f1ea] sm:text-[48px] lg:text-[54px]"
           >
             Premium cannabis products,{" "}
@@ -44,10 +40,10 @@ export function WholesaleHero() {
           </motion.h1>
 
           <motion.p
-            custom={0.2}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-md text-[15px] leading-relaxed text-[#f4f1ea]/70"
           >
             We work with dispensaries, retailers, and distributors who care
@@ -56,10 +52,10 @@ export function WholesaleHero() {
           </motion.p>
 
           <motion.div
-            custom={0.3}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <motion.button
@@ -86,10 +82,10 @@ export function WholesaleHero() {
 
         {/* Right column */}
         <motion.div
-          custom={0.2}
           initial="hidden"
           animate="visible"
           variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
         >
           <Image
