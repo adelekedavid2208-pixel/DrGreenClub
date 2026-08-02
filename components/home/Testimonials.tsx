@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 
 interface Testimonial {
@@ -30,13 +30,15 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
+const fadeUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  },
 };
 
 export function Testimonials() {
@@ -48,11 +50,17 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{
+              duration: 0.5,
+            }}
             className="mb-4 flex items-center justify-center gap-1"
           >
             {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} size={14} className="fill-[#e0a33e] text-[#e0a33e]" />
+              <Star
+                key={i}
+                size={14}
+                className="fill-[#e0a33e] text-[#e0a33e]"
+              />
             ))}
           </motion.div>
 
@@ -60,7 +68,10 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.05 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.05,
+            }}
             className="mx-auto max-w-lg font-serif text-3xl font-semibold leading-tight text-[#1a1a1a] sm:text-4xl"
           >
             Rated 4.9 / 5{" "}
@@ -72,13 +83,23 @@ export function Testimonials() {
           {TESTIMONIALS.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
-              custom={index * 0.12}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeUp}
-              whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.12,
+                ease: [0.22, 1, 0.36, 1] as const,
+              }}
+              whileHover={{
+                y: -4,
+                transition: {
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 22,
+                },
+              }}
               className="flex flex-col rounded-2xl bg-[#fdfbf6] p-7 shadow-sm transition-shadow duration-300 hover:shadow-xl"
             >
               <Quote
@@ -96,6 +117,7 @@ export function Testimonials() {
                 <p className="text-sm font-semibold text-[#1a1a1a]">
                   {testimonial.name}
                 </p>
+
                 {testimonial.membership && (
                   <p className="mt-0.5 text-[12px] text-[#8a8672]">
                     {testimonial.membership}
