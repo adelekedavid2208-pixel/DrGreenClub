@@ -2,16 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { PackageCheck, ArrowRight, Star } from "lucide-react";
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 export function Hero() {
@@ -21,10 +17,10 @@ export function Hero() {
         {/* Left column */}
         <div>
           <motion.div
-            custom={0}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#f4f1ea]/20 px-4 py-1.5"
           >
             <PackageCheck size={14} className="text-[#f4f1ea]/70" strokeWidth={1.75} />
@@ -34,10 +30,10 @@ export function Hero() {
           </motion.div>
 
           <motion.h1
-            custom={0.1}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[42px] font-semibold leading-[1.08] text-[#f4f1ea] sm:text-[52px] lg:text-[58px]"
           >
             Curated
@@ -50,10 +46,10 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            custom={0.2}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-md text-[15px] leading-relaxed text-[#f4f1ea]/70"
           >
             A monthly ritual of premium glass, artisan papers, and exclusive
@@ -61,10 +57,10 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            custom={0.3}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 flex flex-wrap items-center gap-6"
           >
             <Link
@@ -84,10 +80,10 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            custom={0.4}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="mt-9 flex items-center gap-3"
           >
             <div className="flex -space-x-2">
@@ -112,10 +108,10 @@ export function Hero() {
 
         {/* Right column */}
         <motion.div
-          custom={0.2}
           initial="hidden"
           animate="visible"
           variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
